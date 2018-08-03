@@ -1,24 +1,21 @@
 # genrevan-dashbard
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Genrevan Dashboard is a dashboard showing workloads of LXDs registered in a database provided by the Genrevan Scheduler API. Genrevan Dashboard is built using Ruby language with Rails framework.
 
-Things you may want to cover:
+## Development Environment
+1. Ruby 2.5.1
+2. Rails 5.2.0
 
-* Ruby version
+## Running Instructions
+1. Make sure you have the dependencies installed.
+    ```
+    $ bundle install
+    ```
 
-* System dependencies
+2. Please enter the following commands to run the Genrevan dashboard.
+    ```ruby
+    $ rails server
+    ```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Authors
+### GO-SQUADS Tech 2.0 - Team A
