@@ -1,5 +1,6 @@
 <div class="container">
   <h1>LXC List</h1>
+  <button class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;Add</button>
   <table class="table">
     <thead class="thead-light">
       <tr>
@@ -9,6 +10,7 @@
         <th scope="col">Image</th>
         <th scope="col">Status</th>
         <th scope="col">LXD Location</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody class="table-stripped">
@@ -20,6 +22,16 @@
           <td><%= lxc.image %></td>
           <td><%= lxc.status %></td>
           <td><%= lxc.lxd_id %></td>
+          <td>
+            <% if lxc.status == "running" || lxc.status == "started" %>
+              <button class="btn btn-danger"><i class="fas fa-stop"></i></button>
+            <% elsif lxc.status == "stopped" %>
+              <button class="btn btn-primary"><i class="fas fa-play"></i></button>
+            <% elsif lxc.status == "pending" %>
+              <button class="btn btn-primary" disabled><i class="fas fa-play"></i></button>
+            <% end %>
+            <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+          </td>
         </tr>
       <% end %>
     </tbody>
