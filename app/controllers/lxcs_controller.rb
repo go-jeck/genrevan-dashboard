@@ -19,4 +19,29 @@ class LxcsController < ApplicationController
       render :file => 'public/503.html', :status => :error, :layout => false
     end
   end
+
+  def new
+  end
+
+  def create
+    req_body = {
+      "name" => "#{params["name"]}",
+      "image" => "#{params["image"]}"
+    }
+
+    response = HTTParty.post(LXC_ENDPOINT,
+      :body => req_body,
+      :headers => { 'Content-Type' => 'application/x-www-form-urlencoded' })
+
+    case response.code
+    when 201
+      puts "success"
+    when 400
+      puts "bad request"
+    when 500
+      puts "internal server error"
+    end
+    
+    redirect_to "/lxc"
+  end
 end
