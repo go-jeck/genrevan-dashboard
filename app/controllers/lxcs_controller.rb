@@ -7,11 +7,16 @@ class LxcsController < ApplicationController
 
   def index
     @lxcs = Array.new
-    response = HTTParty.get(LXC_ENDPOINT)
-    lxcs_json = JSON.parse(response.body)
-    for lxc_json in lxcs_json do
-      lxc = Lxc.new(lxc_json["id"], lxc_json["name"], lxc_json["ip_address"], lxc_json["image"], lxc_json["status"], lxc_json["lxd_id"])
-      @lxcs.push(lxc)
+    
+    begin
+      response = HTTParty.get(LXC_ENDPOINT)
+      lxcs_json = JSON.parse(response.body)
+      for lxc_json in lxcs_json do
+        lxc = Lxc.new(lxc_json["id"], lxc_json["name"], lxc_json["ip_address"], lxc_json["image"], lxc_json["status"], lxc_json["lxd_id"])
+        @lxcs.push(lxc)
+      end
+    rescue Errno::ECONNREFUSED
+      render :file => 'public/503.html', :status => :error, :layout => false
     end
   end
 end
