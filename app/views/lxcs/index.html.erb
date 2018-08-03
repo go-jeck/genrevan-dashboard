@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>LXC List</h1>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">IP Address</th>
+        <th scope="col">Image</th>
+        <th scope="col">Status</th>
+        <th scope="col">LXD Location</th>
+      </tr>
+    </thead>
+    <tbody class="table-stripped">
+      <% @lxcs.each do |lxc| %>
+        <tr>
+          <td><%= lxc.id %></td>
+          <td><%= lxc.name %></td>
+          <td><%= lxc.ip_address %></td>
+          <td><%= lxc.image %></td>
+          <td><%= lxc.status %></td>
+          <td><%= lxc.lxd_id %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
