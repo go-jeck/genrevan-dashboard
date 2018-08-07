@@ -46,34 +46,4 @@ class LxcsController < ApplicationController
     
     redirect_to "/lxc"
   end
-
-  def change_state
-    lxc_id = params[:id]
-
-    case params[:state]
-    when "stop"
-      lxc_new_state = "stopped"
-    when "start"
-      lxc_new_state = "started"
-    when "delete"
-      lxc_new_state = "deleted"
-    end
-    
-    req_body = {
-      "state" => "#{lxc_new_state}",
-    }
-
-    response = HTTParty.patch(LXC_ENDPOINT+"/"+lxc_id+"/state",
-      :body => req_body,
-      :headers => { 'Content-Type' => 'application/x-www-form-urlencoded' })
-
-    case response.code
-    when 204
-      puts "update state to " + lxc_new_state + "success"
-    else
-      puts "something goes wrong!"
-    end
-
-    redirect_to "/lxc"
-  end
 end
