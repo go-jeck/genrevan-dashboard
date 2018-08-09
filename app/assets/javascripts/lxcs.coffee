@@ -4,7 +4,7 @@
 
 SERVICE_URL = "http://localhost:8000"
 
-stopLXC =(lxc_id) ->
+stopLXC = (lxc_id) ->
   url = "#{SERVICE_URL}/lxc/#{lxc_id}/state"
   $.ajax "#{url}",
     type : 'PATCH'
@@ -21,7 +21,7 @@ stopLXC =(lxc_id) ->
       $("#lxc-status-button-"+lxc_id).on "click", ->
         startLXC(lxc_id)
   
-startLXC =(lxc_id) ->
+startLXC = (lxc_id) ->
   url = "#{SERVICE_URL}/lxc/#{lxc_id}/state"
   $.ajax "#{url}",
     type : 'PATCH'
@@ -38,7 +38,7 @@ startLXC =(lxc_id) ->
       $("#lxc-status-button-"+lxc_id).on "click", ->
         stopLXC(lxc_id)
 
-deleteLXC =(lxc_id) ->
+deleteLXC = (lxc_id) ->
   url = "#{SERVICE_URL}/lxc/#{lxc_id}/state"
   $.ajax "#{url}",
     type : 'PATCH'
@@ -50,7 +50,7 @@ deleteLXC =(lxc_id) ->
     success: (data, textStatus, jqXHR) ->
       window.location.reload()
 
-$ ->
+pageReady = ->
   $(".stopLXC").on "click", ->
     lxc_id = $(this).data().id
     stopLXC(lxc_id)
@@ -60,3 +60,7 @@ $ ->
   $(".deleteLXC").on "click", ->
     lxc_id = $(this).data().id
     deleteLXC(lxc_id)
+
+$(document).ready(pageReady)
+$(document).on('page:load', pageReady)
+$(document).on('turbolinks:load', pageReady)
