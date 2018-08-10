@@ -1,8 +1,20 @@
 <div class="container">
-  <h1>LXD List</h1>
-  <h3><%= @lxd.id %></h3>
-  <h3><%= @lxd.name %></h3>
-  <h3><%= @lxd.ip_address %></h3>
+  <h1>LXD Detail</h1>
+  <hr>
+  <table>
+    <tr>
+      <td><h3>ID&nbsp;</h3></td>
+      <td><h3> <%= @lxd.id %></h3><td>
+    </tr>
+    <tr>
+      <td><h3>Name&nbsp;</h3></td>
+      <td><h3> <%= @lxd.name %></h3><td>
+    </tr>
+    <tr>
+      <td><h3>IP Address&nbsp;</h3></td>
+      <td><h3> <%= @lxd.ip_address %></h3><td>
+    </tr>
+  </table>
   <table class="table">
     <thead class="thead-light">
       <tr>
