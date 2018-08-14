@@ -28,7 +28,8 @@ class LxcsController < ApplicationController
   def create
     req_body = {
       "name" => "#{params["name"]}",
-      "image" => "#{params["image"]}"
+      "image" => "#{params["image"]}",
+      "containerPort" => "#{params["containerPort"]}"
     }
 
     response = HTTParty.post(LXC_ENDPOINT,
