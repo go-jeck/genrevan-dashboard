@@ -13,9 +13,11 @@
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">IP Address</th>
+        <th scope="col">Container Port</th>
         <th scope="col">Image</th>
         <th scope="col">Status</th>
         <th scope="col">LXD Location</th>
+        <th scope="col">Host Port</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -25,9 +27,11 @@
           <td id="lxc-id-<%= lxc.id %>"><%= lxc.id %></td>
           <td id="lxc-name-<%= lxc.id %>"><%= lxc.name %></td>
           <td id="lxc-ip-<%= lxc.id %>"><%= lxc.ip_address %></td>
+          <td id="lxc-container-port-<%= lxc.id %>"><%= lxc.container_port %></td>
           <td id="lxc-image-<%= lxc.id %>"><%= lxc.image %></td>
           <td id="lxc-status-<%= lxc.id %>"><%= lxc.status %></td>
           <td id="lxc-<%= lxc.id %>-lxd"><%= lxc.lxd_id %></td>
+          <td id="lxc-host-port-<%= lxc.id %>"><%= lxc.host_port %></td>
           <td>
             <% if lxc.status == "running" || lxc.status == "started" %>
               <button class="btn btn-danger stopLXC" data-id="<%= lxc.id %>" id="lxc-status-button-<%= lxc.id %>"><i class="fas fa-stop"></i></button>
