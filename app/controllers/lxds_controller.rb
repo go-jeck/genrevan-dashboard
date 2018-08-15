@@ -31,7 +31,7 @@ class LxdsController < ApplicationController
       lxcs_response = HTTParty.get(LXC_OF_LXD_ENDPOINT + "/#{lxd_id}")
       lxcs_json = JSON.parse(lxcs_response.body)
       for lxc_json in lxcs_json do
-        lxc = Lxc.new(lxc_json["id"], lxc_json["name"], lxc_json["ip_address"], lxc_json["image"], lxc_json["status"], lxc_json["lxd_id"])
+        lxc = Lxc.new(lxc_json["id"], lxc_json["name"], lxc_json["ip_address"], lxc_json["image"], lxc_json["status"], lxc_json["lxd_id"], lxc_json["host_port"], lxc_json["container_port"])
         @lxcs.push(lxc)
       end
     rescue Errno::ECONNREFUSED
