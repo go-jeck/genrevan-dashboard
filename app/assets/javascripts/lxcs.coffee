@@ -51,6 +51,7 @@ deleteLXC = (lxc_id) ->
       window.location.reload()
 
 pageReady = ->
+  $('[data-toggle="tooltip"]').tooltip()
   $(".stopLXC").on "click", ->
     lxc_id = $(this).data().id
     stopLXC(lxc_id)
