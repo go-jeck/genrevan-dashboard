@@ -29,7 +29,11 @@
           <td id="lxc-ip-<%= lxc.id %>"><%= lxc.ip_address %></td>
           <td id="lxc-container-port-<%= lxc.id %>"><%= lxc.container_port %></td>
           <td id="lxc-image-<%= lxc.id %>"><%= lxc.image %></td>
-          <td id="lxc-status-<%= lxc.id %>"><%= lxc.status %></td>
+          <td id="lxc-status-<%= lxc.id %>"><%= lxc.status %>
+            <% if lxc.status == "failed" %>
+              <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" data-delay=0 title="<%= lxc.error_message %>"></i>
+            <% end %>
+          </td>
           <td id="lxc-<%= lxc.id %>-lxd"><%= lxc.lxd_id %></td>
           <td id="lxc-host-port-<%= lxc.id %>"><%= lxc.host_port %></td>
           <td>
