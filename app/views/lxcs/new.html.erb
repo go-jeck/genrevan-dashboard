@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
       <label for="image">Image</label>
-      <input type="text" class="form-control" name="image" id="image">
+      <%= select_tag(:image, options_for_select(@image_list), class: "form-control") %>
     </div>
     <div class="form-group col-xs-2">
       <label for="containerPort">Container Port</label>

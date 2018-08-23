@@ -4,6 +4,7 @@ class LxcsController < ApplicationController
   require 'json'
 
   LXC_ENDPOINT = "http://localhost:8000/lxc"
+  IMAGE_ENDPOINT = "http://localhost:8000/images"
 
   def index
     @lxcs = Array.new
@@ -27,6 +28,12 @@ class LxcsController < ApplicationController
   end
 
   def new
+    response = HTTParty.get(IMAGE_ENDPOINT)
+    image_list_json = JSON.parse(response.body)
+    @image_list = Array.new
+    image_list_json.each do |image|
+      @image_list.push(image)
+    end
   end
 
   def create
