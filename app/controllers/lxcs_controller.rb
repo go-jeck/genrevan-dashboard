@@ -49,13 +49,13 @@ class LxcsController < ApplicationController
 
     case response.code
     when 201
-      puts "success"
+      redirect_to "/lxc"
     when 400
-      puts "bad request"
+      redirect_to "/lxc", danger: "bad request"
     when 500
-      puts "internal server error"
+      response_body = JSON.parse(response.body)
+      error_message = response_body["error"]
+      redirect_to "/lxc", danger: error_message
     end
-    
-    redirect_to "/lxc"
   end
 end
